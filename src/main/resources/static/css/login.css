@@ -1,0 +1,8 @@
+html { overflow: hidden; }
+html .login_body { width: 30rem; border: 1px solid #ccc; background-color: rgba(110, 110, 110, 0.1); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); box-sizing: border-box; padding: 15px; }
+html .login_body p { margin-bottom: 10px; }
+html .login_body p.tr { text-align: right; margin-bottom: 0; }
+html .login_body p.info { color: #f00; }
+html .login_body p input { width: 100%; font-size: 1.4rem; padding: 0 10px; background-color: #fff; line-height: 40px; border: 1px solid #ccc; box-sizing: border-box; }
+
+/*# sourceMappingURL=login.css.map */

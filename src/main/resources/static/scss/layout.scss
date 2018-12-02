@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+@import "komi/config";
+@import "komi/media";
+@import "komi/global";
+@import "komi/mixin";
+
+body{
+    background-color:#f9f9f9;
+}
+
+header{
+    height:$HEADER_HEIGHT;
+    background-color:#333;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    width:100%;
+    overflow:hidden;
+    z-index:100;
+    box-sizing:border-box;
+    padding:1rem;
+    .logo{
+        height:4rem;
+        float:left;
+    }
+    div.fr{
+        line-height:4rem;
+        span , a{
+            color:#fff;
+            font-size:1.4rem;
+            margin-left:.5rem;
+        }
+    }
+}
+
+a.com_btn{
+    display:inline-block;
+    height:40px;
+    line-height:40px;
+    border:1px solid #ccc;
+    text-align: center;
+    text-decoration: none;
+    color:#333;
+    font-size:1.4rem;
+    padding:0 20px;
+    background-color:#fff;
+}

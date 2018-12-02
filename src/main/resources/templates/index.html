@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="common/seo"></div>
+    <div th:replace="common/mobile"></div>
+    <div th:replace="common/common_file"></div>
+</head>
+<body>
+
+    <p th:text="'Hello, ' + ${title}" /><br/>
+    <p>1234567</p>
+    <p th:text="${session.sysUser.getUName()}"></p>
+
+</body>
+</html>

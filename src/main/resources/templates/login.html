@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="common/seo"></div>
+    <div th:replace="common/mobile"></div>
+    <div th:replace="common/common_file"></div>
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+    <script>
+        $(function(){
+            $(".com_btn").click(function(){
+                var _uName = $("#uName").val();
+                var _uPassword = $("#uPassword").val();
+                if (_uName.length<1 || _uPassword.length<1){
+                    alert("用户名或密码不能为空！");
+                    return false;
+                }
+                $("#form").submit();
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div class="login_body">
+        <form action="#" th:action="@{/admin/login}" th:object="${sysUser}" method="post" id="form">
+            <p><input th:type="text" placeholder="请输入用户名" id="uName" th:field="*{uName}" /></p>
+            <p><input th:type="password" placeholder="请输入密码" id="uPassword" th:field="*{uPassword}" /></p>
+            <p th:text="${msg}" class="info"></p>
+            <p class="tr"><a href="javascript:;" class="com_btn">登录</a></p>
+
+        </form>
+    </div>
+
+</body>
+</html>

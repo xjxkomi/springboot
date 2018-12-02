@@ -1,0 +1,9 @@
+<header>
+    <img th:src="@{/images/logo.png}" class="logo" />
+    <div class="fr">
+        <span>欢迎您：</span>
+        <span th:text="${session.sysUser.getUName()}"></span>
+        <span th:text="${session.sysUser.getSysRole().getRName()}"></span>
+        <a href="javascript:;">退出</a>
+    </div>
+</header>
