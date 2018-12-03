@@ -37,8 +37,18 @@
                             <th>是否有效</th>
                             <th>操作</th>
                         </tr>
-                        <tr>
-                            <td></td>
+                        <tr th:each="user:${userList}">
+                            <td th:text="${user.getUName()}"></td>
+                            <td th:text="${user.getSysRole().getRName()}"></td>
+                            <td th:text="${#dates.format(user.getULastLoginTimer(),'yyyy-MM-dd HH:mm:ss')}"></td>
+                            <td>
+                                <span th:if="${user.getIsDeleted()} eq '0'">有效</span>
+                                <span th:if="${user.getIsDeleted()} eq '1'">锁定</span>
+                            </td>
+                            <td>
+                                <a th:href="@{user/add(uId=${user.getUId()})}">编辑</a>
+                                <a href="#">删除</a>
+                            </td>
                         </tr>
                     </table>
                 </div>

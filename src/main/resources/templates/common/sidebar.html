@@ -1,6 +1,20 @@
 <div class="sidebar_body">
     <ul>
-        <li><a th:href="@{/admin/products/typeList}">分类管理</a> </li>
-        <li><a th:href="@{/admin/products/list}">详情管理</a> </li>
+        <li>
+            <h3><i class="fa fa-user"></i>药品管理</h3>
+            <ul>
+                <li><a th:href="@{/admin/products/typeList}">分类列表</a> </li></li>
+                <li><a th:href="@{/admin/products/list}">添加分类</a> </li>
+                <li><a th:href="@{/admin/products/typeList}">药品列表</a> </li></li>
+                <li><a th:href="@{/admin/products/list}">添加药品</a> </li>
+            </ul>
+        </li>
+        <li>
+            <h3><i class="fa fa-user"></i>用户管理</h3>
+            <ul>
+                <li><a th:href="@{/admin/user/list}">用户列表</a> </li></li>
+                <li><a th:href="@{/admin/user/add}">详情管理</a> </li>
+            </ul>
+        </li>
     </ul>
 </div>

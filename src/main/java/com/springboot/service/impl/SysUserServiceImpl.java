@@ -16,7 +16,7 @@ public class SysUserServiceImpl implements SysUserService {
     private SysUserRepository sysUserRepository;
 
 
-    public List<SysUser> test(){
+    public List<SysUser> findAll(){
         return sysUserRepository.findAll();
     };
 
@@ -25,6 +25,8 @@ public class SysUserServiceImpl implements SysUserService {
         System.out.println(u_password_md5);
         return sysUserRepository.findByUNameAndUPassword(sysUser.getUName() , u_password_md5);
     }
+
+
 
 
 }

@@ -18,6 +18,6 @@ public class SysRole {
     private String rName;
     private Date createTimer;
     //@Column(nullable = false , insertable = false, columnDefinition = "0")
-    private boolean isDeleted;
+    private int isDeleted;
 
 }
