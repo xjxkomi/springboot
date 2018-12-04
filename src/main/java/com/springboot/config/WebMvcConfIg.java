@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * mvc配置类
  */
 @Configuration
-public class WebMvcConfg implements WebMvcConfigurer {
+public class WebMvcConfig implements WebMvcConfigurer {
     /**
      * @return 登录验证拦截器
      * 自定义登录验证拦截器

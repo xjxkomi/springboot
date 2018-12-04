@@ -1,0 +1,25 @@
+<link rel="stylesheet" th:href="@{/css/jquery.page.css}" />
+<script type="text/javascript" th:src="@{/scripts/jquery.page.js}"></script>
+
+
+<div id="pager"></div>
+
+<script  type="text/javascript"  th:inline="javascript">
+    /*<![CDATA[*/
+    var _current = /*[[${pageList.number}]]*/;
+    $("#pager").createPage({
+        pageCount:  /*[[${pageList.totalPages}]]*/,
+        current: parseInt(_current+ +1),
+        backFn: function(p) {
+            search(p);
+        }
+    });
+    //查询方法
+    function search(p) {
+        location="?page="+parseInt(p-1);
+    }
+    /*]]>*/
+
+</script>
+
+

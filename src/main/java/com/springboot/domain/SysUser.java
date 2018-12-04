@@ -25,6 +25,6 @@ public class SysUser {
     @Column(name="u_last_login_timer")
     private Date uLastLoginTimer;
     @Column(name="is_deleted")
-    private int isDeleted;
+    private Integer isDeleted;
 
 }

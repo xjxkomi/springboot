@@ -18,13 +18,23 @@
                 <div class="content_out">
                     <h3 class="title">查询</h3>
                     <div class="in">
-                        <span><input th:type="text" placeholder="请输入用户名" /> </span>
-                        <span>
-                            <select>
-                                <option>请选择角色</option>
-                            </select>
-                        </span>
-                        <a href="#" class="com_btn">查询</a>
+                        <form action="#" th:action="@{/admin/user/list}" th:object="${sysUser}" method="post">
+                            <span><input th:type="text" placeholder="请输入用户名" th:field="*{uName}" /> </span>
+                            <span>
+                                <select  th:field="*{sysRole.roleId}">
+                                    <option value="-1">请选择角色</option>
+                                    <option th:each="sysRole:${sysRoleList}" th:value="${sysRole.getRoleId()}" th:text="${sysRole.getRName()}"></option>
+                                </select>
+                            </span>
+                            <span>
+                                <select  th:field="*{isDeleted}">
+                                    <option value="-1">是否有效</option>
+                                    <option value="0">有效</option>
+                                    <option value="1">锁定</option>
+                                </select>
+                            </span>
+                            <button type="submit" class="com_btn">查询</button>
+                        </form>
                     </div>
                 </div>
 
@@ -37,20 +47,24 @@
                             <th>是否有效</th>
                             <th>操作</th>
                         </tr>
-                        <tr th:each="user:${userList}">
-                            <td th:text="${user.getUName()}"></td>
-                            <td th:text="${user.getSysRole().getRName()}"></td>
-                            <td th:text="${#dates.format(user.getULastLoginTimer(),'yyyy-MM-dd HH:mm:ss')}"></td>
+                        <tr th:each="sysUser:${pageList.content}">
+                            <td th:text="${sysUser.getUName()}"></td>
+                            <td th:text="${sysUser.getSysRole().getRName()}"></td>
+                            <td th:text="${#dates.format(sysUser.getULastLoginTimer(),'yyyy-MM-dd HH:mm:ss')}"></td>
                             <td>
-                                <span th:if="${user.getIsDeleted()} eq '0'">有效</span>
-                                <span th:if="${user.getIsDeleted()} eq '1'">锁定</span>
+                                <span th:if="${sysUser.getIsDeleted()} eq '0'">有效</span>
+                                <span th:if="${sysUser.getIsDeleted()} eq '1'">锁定</span>
                             </td>
                             <td>
-                                <a th:href="@{user/add(uId=${user.getUId()})}">编辑</a>
+                                <a th:href="@{user/add(uId=${sysUser.getUId()})}">编辑</a>
                                 <a href="#">删除</a>
                             </td>
                         </tr>
                     </table>
+
+                    <div th:replace="common/pager"></div>
+
+
                 </div>
 
             </div>

@@ -1,0 +1,79 @@
+<div class="pager">
+    <ul th:if="${pageList.totalPages le 7}" data-am-widget="pagination" class="am-pagination am-pagination-default" style="text-align: center">
+        <li th:if="${pageList.number > 0}" class="am-pagination-prev ">
+            <a th:href="@{?page={page}(page=${pageList.number})}" class="">上一页</a>
+        </li>
+        <li th:each="i : ${#numbers.sequence(1, pageList.totalPages)}"
+            th:classappend="${(pageList.number + 1) eq i} ? 'am-active' : ''">
+            <a th:href="@{?page={page}(page=${i})}"
+               th:text="${i}" class="">1</a>
+        </li>
+        <li th:unless="${pageList.number + 1 == pageList.totalPages}" class="am-pagination-next ">
+            <a th:href="@{?page={page}(page=${pageList.number} + 2)}" class="">下一页</a>
+        </li>
+    </ul>
+    <ul th:if="${pageList.totalPages gt 7}" data-am-widget="pagination" class="am-pagination am-pagination-default" style="text-align: center">
+        <!-- 上一页 -->
+        <li th:classappend="*{first} ? 'disabled' : ''" th:if="${pageList.number > 0}" class="am-pagination-prev ">
+            <a th:href="@{?page={page}(page=${pageList.number - 2})}">上一页</a>
+        </li>
+        <li class="am-pagination-first" th:classappend="${(pageList.number + 1) eq 1} ? 'am-active' : ''">
+            <a th:href="@{?page=1}">1</a>
+        </li>
+        <!-- 当前页面小于等于4 -->
+        <li th:if="${(pageList.number + 1) le 4}" th:each="i : ${#numbers.sequence(2,5)}"
+            th:classappend="${(pageList.number + 1) eq i} ? 'am-active' : ''" >
+            <a th:href="@{?page={page}(page=${i})}">
+                <span th:text="${i}"></span>
+            </a>
+        </li>
+        <li th:if="${(pageList.number + 1) le 4}">
+            <a href="javascript:void(0);">
+                <span aria-hidden="true">...</span>
+            </a>
+        </li>
+        <!-- 最后一页与当前页面之差，小于等于3 -->
+        <li th:if="${(pageList.totalPages-(pageList.number + 1)) le 3}">
+            <a href="javascript:void(0);" >
+                <span aria-hidden="true">...</span>
+            </a>
+        </li>
+        <li th:if="${(pageList.totalPages-(pageList.number + 1)) le 3}" th:each="i : ${#numbers.sequence(pageList.totalPages-4, pageList.totalPages-1)}"
+            th:classappend="${(pageList.number + 1) eq i} ? 'am-active' : ''" >
+            <a th:href="@{?page={page}(page=${i})}">
+                <span th:text="${i}"></span>
+            </a>
+        </li>
+        <!-- 最后一页与当前页面之差大于3，且  当前页面大于4-->
+        <li th:if="${((pageList.number + 1) gt 4) && ((pageList.totalPages-(pageList.number + 1)) gt 3 )}">
+            <a href="javascript:void(0);">
+                <span aria-hidden="true">...</span>
+            </a>
+        </li>
+        <li th:if="${((pageList.number + 1) gt 4) && ((pageList.totalPages-(pageList.number + 1)) gt 3 )}"
+            th:classappend="${(pageList.number + 1) eq (pageList.number + 1)} ? 'am-active' : ''">
+            <a th:href="@{?page={page}(page=${pageList.number+1})}" th:text="${pageList.number+1}">number</a>
+        </li>
+        <li th:if="${((pageList.number + 1) gt 4) && ((pageList.totalPages-(pageList.number + 1)) gt 3 )}">
+            <a th:href="@{?page={page}(page=${pageList.number+2})}" th:text="${pageList.number+2}">number</a>
+        </li>
+        <li th:if="${((pageList.number + 1) gt 4) && ((pageList.totalPages-(pageList.number + 1)) gt 3 )}">
+            <a th:href="@{?page={page}(page=${pageList.number+3})}" th:text="${pageList.number+3}">number</a>
+        </li>
+        <li th:if="${((pageList.number + 1) gt 4) && ((pageList.totalPages-(pageList.number + 1)) gt 3 )}">
+            <a href="javascript:void(0);">
+                <span aria-hidden="true">...</span>
+            </a>
+        </li>
+        <!-- 最后一页 -->
+        <li th:classappend="${(pageList.number + 1) eq pageList.totalPages} ? 'am-active' : ''" >
+            <a th:href="@{?page={page}(page=${pageList.totalPages})}" th:text="${pageList.totalPages}">endPage</a>
+        </li>
+        <!-- 下一页 -->
+        <li th:classappend="*{last} ? 'disabled' : ''" th:unless="${pageList.number + 1 == pageList.totalPages}">
+            <a th:href="@{?page={page}(page=${pageList.number+2})}">
+                <span aria-hidden="true">下一页</span>
+            </a>
+        </li>
+    </ul>
+</div>
