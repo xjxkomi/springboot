@@ -33,7 +33,8 @@ public class SysUserController {
                        @RequestParam(value = "page", defaultValue = "0") Integer page ,
                        @RequestParam(value = "size", defaultValue = "10") Integer size){
         List <SysRole> sysRoleList = sysRoleService.findAll();
-        Page<SysUser> sysUserPage = sysUserService.findSysUserNoCriteria(page,size);
+        Page<SysUser> sysUserPage = sysUserService.findPageWithParams(page,size,sysUser);
+        //Page<SysUser> sysUserPage = sysUserService.findPage(page,size);
         modelMap.put("pageList", sysUserPage);
         modelMap.put("sysRoleList" , sysRoleList);
         return "user/list";

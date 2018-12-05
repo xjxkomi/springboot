@@ -12,6 +12,7 @@ public interface SysUserService {
 
     List<SysUser> checkLogin(SysUser sysUser);
 
-    Page<SysUser> findSysUserNoCriteria(Integer page, Integer size);
+    Page<SysUser> findPage(Integer page, Integer size);
 
+    Page<SysUser> findPageWithParams(Integer page, Integer size, final SysUser sysUser);
 }
